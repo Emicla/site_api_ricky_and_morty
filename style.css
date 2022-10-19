@@ -9,20 +9,25 @@
         transform: scale(0);
     }
 
-    100% {
+    50% {
         opacity: 100%;
         transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0);
     }
 }
 
 @keyframes animacaoImagem {
     0% {
-        left: 0;
+        left: 20%;
         opacity: 0;
     }
 
     100% {
-        left: 19%;
+        left: 50%;
         opacity: 100%;
     }
 }
@@ -30,7 +35,8 @@
 body {
     background-image: url("Imagens/fundo espaço.jpg");
 	background-repeat: no-repeat;
-	background-size: 100%;
+	background-size: cover;
+    background-position: center center;
 	background-attachment: fixed;
 }
 
@@ -51,21 +57,24 @@ main {
 
 .portal {
     width: 260px;
-    position: relative;
-    right: 20px;
+    position: absolute;
     transition: all 2s;
     animation-name: animacaoPortal;
-    animation-duration: 1s;
-    animation-delay: 1.8s;
+    animation-duration: 4s;
+    animation-delay: 1s;
     animation-fill-mode: both;
     cursor: pointer;
 }
 
-.imagens {
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.section-imagens {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 68%;
     animation-name: animacaoImagem;
     animation-duration: 1s;
     animation-delay: 2.5s;
@@ -77,7 +86,7 @@ main {
     border: 1px solid #09ff00;
     border-radius: 5px;
     padding: 8px 10px;
-    margin-right: 10px;
+    margin: 5px;
     cursor: pointer;
     transition: all 250ms;
     width: 205px;
@@ -90,7 +99,7 @@ main {
 }
 
 .imagem-aberta {
-    background-color: #000000;
+    background-color: #012400;
 }
 
 .imagem-fechada:hover {
@@ -98,7 +107,7 @@ main {
 }
 
 .imagem-aberta:hover {
-    background: #012400;
+    background: #047e00;
 }
 
 .imagem-personagem {
@@ -112,7 +121,7 @@ main {
 .div-imagem p {
     color: #FFFFFF;
     font-size: 1em;
-    /* font-weight: bold; */
+    font-weight: bold;
     margin: 3px 5px;
 }
 

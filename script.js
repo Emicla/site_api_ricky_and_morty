@@ -6,7 +6,7 @@
 
 let urlApi = "https://rickandmortyapi.com/api/character";
 let imagens = document.querySelectorAll(".imagem-personagem");
-let sectionImagens = document.querySelector(".imagens");
+let sectionImagens = document.querySelector(".section-imagens");
 
 fetch(urlApi)
     .then(
@@ -16,7 +16,7 @@ fetch(urlApi)
     .then(
         (dados)=>{
             console.log(dados);
-            for(var i = 0; i < 4; i++){
+            for(var i = 0; i < 3; i++){
                 let sorteiaImagem = Math.round(Math.random()*19);
 
                 sectionImagens.innerHTML += `<div class="div-imagem imagem-fechada" onclick="abrirDados(this)" situacao="fechado">
