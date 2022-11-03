@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes carregando {
+    0%{opacity: 0.2;}
+    100%{opacity: 1;}
+}
+
+@keyframes animacaoImagem {
+    0% {
+        left: 20%;
+        opacity: 0;
+    }
+
+    100% {
+        left: 50%;
+        opacity: 100%;
+    }
+}
+
+@keyframes animacaoPortal {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 100%;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+body {
+    background-image: url("../img/fundo espaço.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: center center;
+	background-attachment: fixed;
+}
+
+header {
+    padding: 50px 0;
+}
+
+header h1 {
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 3.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+header nav {
+    text-align: center;
+}
+
+nav li {
+    display: inline-block;
+    border: 1px solid #424242;
+    padding: 10px;
+    margin: 0 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #222222;
+    color: #FFFFFF;
+}
+
+nav li:hover {
+    background-color: #585858;
+}
+
+nav .marcado {
+    color: #15ff00;
+    background-color: #222222;
+    border-color: #00FF00;
+}
+
+main {
+    position: relative;
+}
+
+.div-nova-colecao {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    background-color: #213441;
+    padding: 20px 10px;
+    border-radius: 12px;
+    border: 0.5px solid #7baf7b;
+    color:#00FF00;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.div-nova-colecao .icon-fechar {
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: gray;
+    cursor: pointer;
+}
+
+.div-nova-colecao .icon-fechar:hover {
+    background-color: rgb(255, 47, 47);
+}
+
+.div-nova-colecao label {
+    display: block;
+}
+
+.div-nova-colecao input {
+    padding: 8px 3px;
+    background-color: #293035;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    color: #CCCCCC;
+    font-size: 1rem;
+    margin-top: 3px;
+}
+
+.div-nova-colecao button {
+    padding: 8px 13px;
+    background-color: #353535;
+    color:#09ff00;
+    cursor: pointer;
+    border: 1px solid #00FF00;
+    border-radius: 2px;
+    transition: all 300ms;
+}
+
+.div-nova-colecao button:hover {
+    background-color: #686868;
+    color:#ffffff;
+    border-color: #FFFFFF;
+}
+
+.div-avisos {
+    text-align: center;
+}
+
+.div-avisos img {
+    border-radius: 50%;
+    padding: 15px;
+    background-color: #3bff45;
+    cursor: pointer;
+    width: 30px;
+    margin-top: 20px;
+}
+
+.div-avisos img:hover {
+    background-color: #00FF00;
+}
+
+.aviso {
+    color: #FFFFFF;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 200;
+}
+
+.aviso span {
+    font-size: 2em;
+}
+
+.aviso span:nth-of-type(1) {
+    animation-name: carregando;
+    animation-duration: 200ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: both;
+}
+
+.aviso span:nth-of-type(2) {
+    animation-name: carregando;
+    animation-duration: 200ms;
+    animation-delay: 100ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: both;
+}
+
+.aviso span:nth-of-type(3) {
+    animation-name: carregando;
+    animation-duration: 200ms;
+    animation-delay: 200ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: both;
+}
+.section-imagens {
+    width: 70%;
+    min-height: 400px;
+    padding: 10px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid #00FF00;
+    border-radius: 5px;
+    /* animation: animacaoImagem 1s ease 2.5s 1 normal both; */
+}
+
+.div-imagem {
+    display: inline-block;
+    border: 1px solid #09ff00;
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: all 250ms;
+    width: 205px;
+    height: 208px;
+    overflow: hidden;
+}
+
+.imagem-fechada {
+    background-color: #00000000;
+}
+
+.imagem-aberta {
+    background-color: #012400;
+}
+
+.imagem-fechada:hover {
+    background: #0abd04;
+}
+
+.imagem-aberta:hover {
+    background: #047e00;
+}
+
+.imagem-personagem {
+    width: 200px;
+    border-radius: 5px;
+    border: 2px solid #09ff00;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.div-imagem p {
+    color: #FFFFFF;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 3px 5px;
+}
+
+.dados {
+    height: 87px;
+    overflow: auto;
+    border: 1px dashed #09ff00;
+}
+
+.arma-portais {
+    width: 15%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.loja-informacoes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000009a;
+    transition: all 2s;
+}
+
+.portal {
+    cursor: pointer;
+    width: 260px;
+    position: absolute;
+    top: 20%;
+    left: 2%;
+    animation: animacaoPortal 4s ease 1s 1 normal both;
+}
+
+.invisivel {
+    display: none;
+}
