@@ -1,0 +1,83 @@
+.pop-up {
+    width: 30%;
+    background-color: #303a00;
+    color: #fffb00;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    font-size: 1.3rem;
+    border: 1px solid #fffb00;
+}
+
+.pop-up img {
+    width: 8%;
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-color: #fffb00;
+    cursor: pointer;
+}
+
+.campo-add-colecao {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #213441;
+    padding: 20px 10px;
+    border-radius: 12px;
+    border: 0.5px solid #7baf7b;
+    color:#00FF00;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.campo-add-colecao label {
+    display: block;
+}
+
+.campo-add-colecao input {
+    padding: 8px 3px;
+    background-color: #293035;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    color: #CCCCCC;
+    font-size: 1rem;
+    margin-top: 3px;
+}
+
+.campo-add-colecao button {
+    padding: 8px 13px;
+    background-color: #353535;
+    color:#09ff00;
+    cursor: pointer;
+    border: 1px solid #00FF00;
+    border-radius: 2px;
+    transition: all 300ms;
+}
+
+.campo-add-colecao button:hover {
+    background-color: #686868;
+    color:#ffffff;
+    border-color: #FFFFFF;
+}
+
+.campo-add-colecao .icon-fechar {
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    background-color: gray;
+    cursor: pointer;
+}
+
+.campo-add-colecao .icon-fechar:hover, .pop-up img:hover {
+    background-color: rgb(255, 47, 47);
+}

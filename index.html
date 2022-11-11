@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_images.css">
+    <link rel="stylesheet" href="css/style_eventos.css">
     <title>Utilizando APIs</title>
 </head>
 <body>
@@ -12,36 +14,34 @@
         <h1>Rick and Morty</h1>
         <nav>
             <ul class="botoes-nav">
-                <li class="marcado">Coleção</li>
-                <li class="desmarcado">Projetos</li>
+                <!-- <li><img src="img/icon-github.png"></li>
+                <li><img src="img/icon_livro.png"></li>
+                <li><img src="img/icon_linkedin.png"></li> -->
+                <li class="invisivel" id="icon-add-colecao"><img src="img/icon adicionar.png" onclick="removeClasse(campoAddColecao, 'invisivel')"></li>
             </ul>
         </nav>
     </header>
     
     <main>
-        <div class="div-nova-colecao invisivel">
-            <img src="img/icone fechar.png" class="icon-fechar" onclick="adicionarClasse(this.parentElement)">
+        <section class="conteiner-config" id="conteiner-principal">
+                <p class="msg-status">Loading
+                    <span>.</span> 
+                    <span>.</span> 
+                    <span>.</span>
+                </p>
+        </section>
+
+        <div class="pop-up invisivel">
+            <img src="img/icone fechar.png" onclick="adicionarClasse(this.parentElement, 'invisivel')">
+            <p class="msg-pop-up">Nome Inválido</p>
+        </div>
+
+        <div class="campo-add-colecao invisivel">
+            <img src="img/icone fechar.png" class="icon-fechar" onclick="adicionarClasse(this.parentElement, 'invisivel')">
             <label for="txt-colecao">Name Collection</label>
             <input type="text" id="txt-colecao" onpaste="return false" ondrop="return false" oninput="verificaInput(this)">
-            <button onclick="">Create</button>
+            <button onclick="comparaNomes()">Create</button>
         </div>
-
-        <div class="div-avisos">
-            <p class="aviso">Loading
-                <span>.</span> 
-                <span>.</span> 
-                <span>.</span>
-            </p>
-        </div>
-
-        <section class="section-imagens invisivel">
-            <!-- <div class="div-imagem">
-                <img src="" class="imagem-personagem">
-                <p class="nome">Nome: Rick</p>
-                <p class="especie">Especie: Humano</p>
-                <p class="status">Status: Vivo</p>
-            </div> -->
-        </section>
 
         <img src="img/arma portais.png" class="arma-portais invisivel" title="Loja">
     </main>
@@ -51,5 +51,6 @@
     </section>
 </body>
 </html>
+<script src="js/funcoes.js"></script>
 <script src="js/script.js"></script>
 <script src="js/criacao_colecao.js"></script>

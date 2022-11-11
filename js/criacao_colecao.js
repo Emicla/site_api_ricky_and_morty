@@ -1,24 +1,24 @@
 let inputColecao = document.querySelector("#txt-colecao");
 
-let temEspaco = false;
-let palavraSemEspaco = "";
+let digitouErrado = false;
+let palavraCorreta = "";
 let inputIncorreto = true;
 
 inputColecao.addEventListener("keydown", (tecla) => {
     if (tecla.key == " ") {
-        temEspaco = true;
-        palavraSemEspaco = inputColecao.value;
+        digitouErrado = true;
+        palavraCorreta = inputColecao.value;
 
     } else {
-        temEspaco = false;
+        digitouErrado = false;
     }
 });
 
 function verificaInput(input) {
     let palavraDigitada = input.value;
 
-    if (temEspaco) {
-        input.value = palavraSemEspaco;
+    if (digitouErrado) {
+        input.value = palavraCorreta;
 
     } else if (palavraDigitada.length < 4) {
         input.style.color = "#CCCCCC";
@@ -36,9 +36,19 @@ function verificaInput(input) {
 }
 
 function comparaNomes() {
-    
+    if (inputIncorreto || colecaoArmazenada[inputColecao.value] != undefined) {
+        console.log("Nome Inválido");
+        popUp.classList.remove("invisivel");
+        msgPopUp.textContent = "Nome Inválido";
+        
+    } else {
+        criarColecao(inputColecao.value);
+        inputColecao.value = "";
+        adicionarClasse(inputColecao.parentElement, 'invisivel');
+    }
 }
 
-function criarColecao() {
-    
+function criarColecao(novaColecao) {
+    colecaoArmazenada[novaColecao] = {};
+    armazenaColecao();
 }

@@ -4,13 +4,18 @@
 
 "use strict";
 
-let div_aviso = document.querySelector(".div-avisos");
-let aviso = div_aviso.querySelector(".aviso");
+let conteinerPrincipal = document.querySelector("#conteiner-principal");
+
+let popUp = document.querySelector(".pop-up");
+let msgPopUp = document.querySelector(".msg-pop-up");
+
+let iconAddColecao = document.querySelector("#icon-add-colecao");
+let campoAddColecao = document.querySelector(".campo-add-colecao");
+
 let imagens = document.querySelectorAll(".imagem-personagem");
-let sectionImagens = document.querySelector(".section-imagens");
-let divNovaColecao = document.querySelector(".div-nova-colecao");
 
 let urlApi = "https://rickandmortyapi.com/api/character";
+let colecaoArmazenada;
 
 onload = function conectaApi() {
     fetch(urlApi)
@@ -25,42 +30,43 @@ onload = function conectaApi() {
             })
         .catch(
             (erro) => {
+                let aviso = conteinerPrincipal.querySelector(".msg-status");
                 console.log("Houve um erro: " + erro);
                 aviso.textContent = "Error Connect";
             })
 }
 
 function buscaColecao() {
-    let colecaoArmazenada = localStorage.getItem("colecao-rick-morty");
+    colecaoArmazenada = JSON.parse(localStorage.getItem("colecao-rick-morty"));
 
-    if (colecaoArmazenada == null) {
+    if (colecaoArmazenada == null || isEmpty(colecaoArmazenada)) {
         console.log("Nenhuma coleção encontrada");
-        aviso.textContent = "No collection stored";
-        div_aviso.innerHTML += `<img src="img/icon adicionar.png" onclick="removeClasse(divNovaColecao)">`;
+        colecaoArmazenada = {};
+
+        adicionarClasse(iconAddColecao, "invisivel");
+        removeClasse(conteinerPrincipal, "conteiner-colecao");
+        adicionarClasse(conteinerPrincipal, "conteiner-config");
+
+        conteinerPrincipal.innerHTML = `
+            <p class="msg-status">No collection stored</p>
+            <img src="img/icon adicionar.png" onclick="removeClasse(campoAddColecao, 'invisivel')">
+        `;
 
     } else {
-        console.log(colecaoArmazenada);
+        removeClasse(iconAddColecao, "invisivel");
+        removeClasse(conteinerPrincipal, "conteiner-config");
+        adicionarClasse(conteinerPrincipal, "conteiner-colecao");
+        mostraColecoes(colecaoArmazenada);
     }
 }
 
-function adicionarClasse(tag){
-    tag.classList.add("invisivel");
+function mostraColecoes(colectionArmazenada){
+    conteinerPrincipal.innerHTML = "";
+    
+    for(var nomeColecao in colectionArmazenada){
+        conteinerPrincipal.innerHTML += `<div class="colecoes">
+                                            <p>${nomeColecao}</p>
+                                            <button onclick="delColecao(this.parentElement)">Apagar</button>
+                                        </div>`
+    }    
 }
-
-function removeClasse(tag){
-    tag.classList.remove("invisivel");
-}
-
-// for(var i = 0; i < 4; i++){
-                //     let sorteiaImagem = Math.round(Math.random()*19);
-
-                //     sectionImagens.innerHTML += `<div class="div-imagem imagem-fechada" onclick="abrirDados(this)" situacao="fechado">
-                //                                     <img src="${dados.results[sorteiaImagem].image}" class="imagem-personagem">
-                //                                     <div class="dados">
-                //                                         <p class="nome">Name: ${dados.results[sorteiaImagem].name}</p>
-                //                                         <p class="especie">Species: ${dados.results[sorteiaImagem].species}</p>
-                //                                         <p class="status">Status: ${dados.results[sorteiaImagem].status}</p>
-                //                                         <p class="origin">Origin: ${dados.results[sorteiaImagem].origin.name}</p>
-                //                                     </div>
-                //                                 </div>`;
-                // }
