@@ -47,7 +47,7 @@ nav img {
 }
 
 nav img:hover {
-    background-color: #00a700;
+    background-color: #00FF00;
 }
 
 main {
@@ -55,9 +55,7 @@ main {
     margin-bottom: 10px;
 }
 
-#conteiner-principal {
-    width: 40%;
-    min-height: 200px;
+#conteiner-principal > div {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -100,6 +98,7 @@ main {
 }
 
 .conteiner-colecao {
+    width: 40%;
     border: 1px solid #00FF00;
     border-radius: 5px;
     padding: 15px;
@@ -130,14 +129,23 @@ main {
 .conteiner-colecao button {
     position: absolute;
     top: 50%;
-    right: 10px;
     transform: translateY(-50%);
     padding: 10px 31px;
     border: none;
     border-radius: 8px;
+    cursor: pointer;
+}
+
+.conteiner-colecao button:last-of-type{
+    right: 10px;
     background: red;
     color: white;
-    cursor: pointer;
+}
+
+.conteiner-colecao button:first-of-type{
+    right: 120px;
+    background: rgb(0, 102, 255);
+    color: white;
 }
 
 .invisivel {

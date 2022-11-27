@@ -14,21 +14,32 @@
         <h1>Rick and Morty</h1>
         <nav>
             <ul class="botoes-nav">
-                <!-- <li><img src="img/icon-github.png"></li>
-                <li><img src="img/icon_livro.png"></li>
-                <li><img src="img/icon_linkedin.png"></li> -->
-                <li class="invisivel" id="icon-add-colecao"><img src="img/icon adicionar.png" onclick="removeClasse(campoAddColecao, 'invisivel')"></li>
+                <li>
+                    <a href="https://github.com/Emicla" target="_blank"><img src="img/icon-github.png"></a>
+                </li>
+                <li><img src="img/icon_linkedin.png"></li>
+                <li><img src="img/icon_livro.png" onclick="adicionarClasse(armaPortais, 'invisivel'), buscaColecao()"></li>
+
+                <li class="invisivel" id="icon-add-colecao">
+                    <img src="img/icon adicionar.png" onclick="removeClasse(campoAddColecao, 'invisivel')">
+                </li>
             </ul>
         </nav>
     </header>
     
     <main>
-        <section class="conteiner-config" id="conteiner-principal">
+        <section id="conteiner-principal">
+
+            <div class="conteiner-config">
+
                 <p class="msg-status">Loading
                     <span>.</span> 
-                    <span>.</span> 
+                    <span>.</span>
                     <span>.</span>
                 </p>
+                
+            </div>
+
         </section>
 
         <div class="pop-up invisivel">
@@ -38,19 +49,18 @@
 
         <div class="campo-add-colecao invisivel">
             <img src="img/icone fechar.png" class="icon-fechar" onclick="adicionarClasse(this.parentElement, 'invisivel')">
-            <label for="txt-colecao">Name Collection</label>
+            <label for="txt-colecao">Collection Name</label>
             <input type="text" id="txt-colecao" onpaste="return false" ondrop="return false" oninput="verificaInput(this)">
             <button onclick="comparaNomes()">Create</button>
         </div>
 
-        <img src="img/arma portais.png" class="arma-portais invisivel" title="Loja">
+        <img src="img/arma portais.png" class="arma-portais invisivel" title="Sortear Personagem" id="arma-portais" onclick="sortearPersonagem()">
     </main>
 
-    <section class="loja-informacoes invisivel">
-        <img src="img/Portal.png" class="portal">
-    </section>
+    <section class="fundo-escuro invisivel" onclick="adicionarClasse(fundoEscuro, 'invisivel')"></section>
 </body>
 </html>
 <script src="js/funcoes.js"></script>
 <script src="js/script.js"></script>
 <script src="js/criacao_colecao.js"></script>
+<script src="js/colecoes_imagens.js"></script>

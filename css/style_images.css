@@ -27,12 +27,38 @@
     }
 }
 
+@keyframes saindoPortal {
+    0% {
+        opacity: 0;
+        left: 20%;
+    }
+
+    100% {
+        opacity: 1;
+        left: 50%;
+    }
+}
+
+@keyframes showArmaPorta {
+    0% {
+        bottom: -100px;
+        right: -200px;
+    }
+
+    100% {
+        bottom: 0px;
+        right: 0px;
+    }
+}
+
 .section-imagens {
+    max-width: 55%;
+    /* min-height: 400px; */
     padding: 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     border: 1px solid #00FF00;
     border-radius: 5px;
 }
@@ -40,6 +66,7 @@
 .div-imagem {
     display: inline-block;
     border: 1px solid #09ff00;
+    background-color: #00000000;
     border-radius: 5px;
     padding: 8px 10px;
     margin: 5px;
@@ -47,23 +74,12 @@
     transition: all 250ms;
     width: 205px;
     height: 208px;
-    overflow: hidden;
+    position: relative;
+    /* overflow: hidden; */
 }
 
-.imagem-fechada {
-    background-color: #00000000;
-}
-
-.imagem-aberta {
-    background-color: #012400;
-}
-
-.imagem-fechada:hover {
+.section-imagens .div-imagem:hover {
     background: #0abd04;
-}
-
-.imagem-aberta:hover {
-    background: #047e00;
 }
 
 .imagem-personagem {
@@ -74,28 +90,35 @@
     margin-bottom: 10px;
 }
 
-.div-imagem p {
-    color: #FFFFFF;
-    font-size: 1em;
+.section-imagens .q-imagens {
+    background-color: #023600;
+    color: #00FF00;
+    border: 1px solid #00FF00;
+    font-size: 1.6rem;
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 50%;
     font-weight: bold;
-    margin: 3px 5px;
+    position: absolute;
+    right: -15px;
+    bottom: -5px;
 }
 
-.dados {
-    height: 87px;
-    overflow: auto;
-    border: 1px dashed #09ff00;
+.section-imagens p {
+    color: #FFFFFF;
+    font-size: 2rem;
 }
 
 .arma-portais {
-    width: 15%;
+    width: 200px;
     position: fixed;
     bottom: 0;
     right: 0;
     cursor: pointer;
+    animation: showArmaPorta 500ms linear 500ms 1 normal both;
 }
 
-.loja-informacoes {
+.fundo-escuro {
     position: fixed;
     top: 0;
     left: 0;
@@ -111,5 +134,51 @@
     position: absolute;
     top: 20%;
     left: 2%;
-    animation: animacaoPortal 4s ease 1s 1 normal both;
+    animation: animacaoPortal 5s ease 500ms 1 normal both;
+}
+
+.fundo-escuro .div-img-sorteado {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    animation: saindoPortal 1.5s ease 1.5s 1 normal both;
+}
+
+.fundo-escuro .infs {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fundo-escuro .div-img-inf {
+    background-color: #023600;
+}
+
+.fundo-escuro .inf-personagem {
+    background-color: #353535;
+    display: inline-block;
+    border-radius: 10px;
+    padding-left: 20px;
+    width: 40%;
+}
+
+.inf-personagem p {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    color: #3bff45;
+}
+
+.inf-personagem .nome {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #09ff00;
 }

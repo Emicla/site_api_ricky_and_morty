@@ -16,11 +16,12 @@ function isEmpty(colectionArmazenada){
 
 function armazenaColecao(){
     localStorage.setItem("colecao-rick-morty", JSON.stringify(colecaoArmazenada));
-    buscaColecao();
+    // buscaColecao();
 }
 
 function delColecao(tagPai){
     let nomeColecao = tagPai.querySelector("p").textContent;
     delete colecaoArmazenada[nomeColecao];
     armazenaColecao();
+    buscaColecao();
 }

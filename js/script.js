@@ -12,10 +12,13 @@ let msgPopUp = document.querySelector(".msg-pop-up");
 let iconAddColecao = document.querySelector("#icon-add-colecao");
 let campoAddColecao = document.querySelector(".campo-add-colecao");
 
-let imagens = document.querySelectorAll(".imagem-personagem");
+let armaPortais = document.querySelector("#arma-portais");
 
-let urlApi = "https://rickandmortyapi.com/api/character";
+const urlApi = "https://rickandmortyapi.com/api/character";
+
 let colecaoArmazenada;
+let retornoApi;
+let colecaoAberta;
 
 onload = function conectaApi() {
     fetch(urlApi)
@@ -26,6 +29,7 @@ onload = function conectaApi() {
         .then(
             (dados) => {
                 console.log(dados);
+                retornoApi = dados;
                 buscaColecao();
             })
         .catch(
@@ -44,29 +48,56 @@ function buscaColecao() {
         colecaoArmazenada = {};
 
         adicionarClasse(iconAddColecao, "invisivel");
-        removeClasse(conteinerPrincipal, "conteiner-colecao");
-        adicionarClasse(conteinerPrincipal, "conteiner-config");
 
         conteinerPrincipal.innerHTML = `
-            <p class="msg-status">No collection stored</p>
-            <img src="img/icon adicionar.png" onclick="removeClasse(campoAddColecao, 'invisivel')">
+                <div class="conteiner-config">
+                    <p class="msg-status">No collection stored</p>
+                    <img src="img/icon adicionar.png" onclick="removeClasse(campoAddColecao, 'invisivel')">
+                </div>
         `;
 
     } else {
         removeClasse(iconAddColecao, "invisivel");
-        removeClasse(conteinerPrincipal, "conteiner-config");
-        adicionarClasse(conteinerPrincipal, "conteiner-colecao");
         mostraColecoes(colecaoArmazenada);
     }
 }
 
-function mostraColecoes(colectionArmazenada){
-    conteinerPrincipal.innerHTML = "";
-    
-    for(var nomeColecao in colectionArmazenada){
-        conteinerPrincipal.innerHTML += `<div class="colecoes">
+function mostraColecoes(colectionArmazenada) {
+    conteinerPrincipal.innerHTML = `<div class="conteiner-colecao"></div>`;
+
+    let conteinerColecoes = conteinerPrincipal.querySelector(".conteiner-colecao");
+
+    for (var nomeColecao in colectionArmazenada) {
+        conteinerColecoes.innerHTML += `<div class="colecoes">
                                             <p>${nomeColecao}</p>
-                                            <button onclick="delColecao(this.parentElement)">Apagar</button>
+                                            <button onclick="abrirColecao(this.parentElement.children[0].textContent)">Open</button>
+                                            <button onclick="delColecao(this.parentElement)">Delete</button>
                                         </div>`
-    }    
+    }
+}
+
+function abrirColecao(nomeColecao) {
+    adicionarClasse(iconAddColecao, "invisivel");
+    removeClasse(armaPortais, "invisivel");
+
+    conteinerPrincipal.innerHTML = `<div class="section-imagens"></div>`;
+
+    let conteinerImagens = conteinerPrincipal.querySelector(".section-imagens");
+    colecaoAberta = nomeColecao;
+    
+    console.log(colecaoArmazenada[nomeColecao]);
+
+    if (isEmpty(colecaoArmazenada[nomeColecao].personagens)) {
+        conteinerImagens.innerHTML += `<p>No Image Found</p>`;
+
+    } else {
+        let colecao = colecaoArmazenada[nomeColecao].personagens;
+
+        for (var personagem in colecao) {
+            conteinerImagens.innerHTML += `<div class="div-imagem" onclick="abrirDados(this.children[0].dataset.nome)">
+                                                <img src="${retornoApi.results[colecao[personagem].indice].image}" class="imagem-personagem" data-nome="${retornoApi.results[colecao[personagem].indice].name}">
+                                                <p class="q-imagens">${colecao[personagem].quantidade}</p>
+                                            </div>`;
+        }
+    }
 }

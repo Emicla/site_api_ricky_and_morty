@@ -49,6 +49,26 @@ function comparaNomes() {
 }
 
 function criarColecao(novaColecao) {
-    colecaoArmazenada[novaColecao] = {};
+    colecaoArmazenada[novaColecao] = {
+        personagens: {}
+    };
     armazenaColecao();
+    buscaColecao();
 }
+//OBJETO ARMAZENADO
+/*
+colecao-rick-morty {
+    colecao1: {
+        personagens: {
+            rick: {
+                indice: 0,
+                quantidade: 2,
+            },
+            morty: {
+                indice: 5,
+                quantidade: 1,
+            }
+        }
+    },
+}
+*/
