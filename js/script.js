@@ -6,6 +6,8 @@
 
 let conteinerPrincipal = document.querySelector("#conteiner-principal");
 
+let botaoLivro = document.querySelector("#botao-livro");
+
 let popUp = document.querySelector(".pop-up");
 let msgPopUp = document.querySelector(".msg-pop-up");
 
@@ -34,6 +36,7 @@ onload = function conectaApi() {
             })
         .catch(
             (erro) => {
+                botaoLivro.classList.add("invisivel");
                 let aviso = conteinerPrincipal.querySelector(".msg-status");
                 console.log("Houve um erro: " + erro);
                 aviso.textContent = "Error Connect";
@@ -52,7 +55,7 @@ function buscaColecao() {
         conteinerPrincipal.innerHTML = `
                 <div class="conteiner-config">
                     <p class="msg-status">No collection stored</p>
-                    <img src="img/icon adicionar.png" onclick="removeClasse(campoAddColecao, 'invisivel')">
+                    <img src="img/icon_add.png" onclick="removeClasse(campoAddColecao, 'invisivel')">
                 </div>
         `;
 
@@ -68,12 +71,22 @@ function mostraColecoes(colectionArmazenada) {
     let conteinerColecoes = conteinerPrincipal.querySelector(".conteiner-colecao");
 
     for (var nomeColecao in colectionArmazenada) {
-        conteinerColecoes.innerHTML += `<div class="colecoes">
-                                            <p>${nomeColecao}</p>
-                                            <button onclick="abrirColecao(this.parentElement.children[0].textContent)">Open</button>
-                                            <button onclick="delColecao(this.parentElement)">Delete</button>
+        conteinerColecoes.innerHTML += `<div class="div-colecao" 
+                                            onmouseover="mudarStyle(this.children[1], 'display', 'inline-block'), mudarStyle(this.children[0], 'width', '78%')" 
+                                            onmouseout="mudarStyle(this.children[1], 'display', 'none'), mudarStyle(this.children[0], 'width', '90%')"
+                                        >
+                                            <div class="colecao" onclick="abrirColecao(this.children[0].textContent)">
+                                                <p>${nomeColecao}</p>
+                                            </div>
+                                            <div class="div-img">
+                                                <img src="./img/icon_lixo.png" onclick="delColecao(this.parentElement.parentElement.children[0])">
+                                            </div>
                                         </div>`
     }
+}
+
+function mudarStyle(tag, estilo, valor) {
+    tag.style[estilo] = valor;
 }
 
 function abrirColecao(nomeColecao) {
@@ -91,6 +104,8 @@ function abrirColecao(nomeColecao) {
         conteinerImagens.innerHTML += `<p>No Image Found</p>`;
 
     } else {
+        conteinerImagens.style.border = "1px solid #00FF00";
+
         let colecao = colecaoArmazenada[nomeColecao].personagens;
 
         for (var personagem in colecao) {

@@ -32,22 +32,31 @@ header nav {
     text-align: center;
 }
 
+nav .botoes-nav {
+    background-color: #101010;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 15px;
+    border: 2px solid #00FF00;
+}
+
 nav li {
     display: inline-block;
-    margin: 0 3px;
-    padding: 10px;
+    margin: 0 10px;
+    padding: 12px;
+    border-radius: 50%;
+    outline: 5px solid #00FF00;
+    background-color: #000000;
+    cursor: pointer;
 }
 
 nav img {
-    border-radius: 50%;
-    padding: 15px;
-    background-color: #3bff45;
-    cursor: pointer;
-    width: 30px;
+    width: 28px;
 }
 
-nav img:hover {
-    background-color: #00FF00;
+nav li:hover {
+    outline: 6px solid #09ff00;
+    background-color: #002703;
 }
 
 main {
@@ -70,7 +79,7 @@ main {
     padding: 15px;
     background-color: #3bff45;
     cursor: pointer;
-    width: 30px;
+    width: 40px;
     margin-top: 20px;
 }
 
@@ -102,9 +111,15 @@ main {
     border: 1px solid #00FF00;
     border-radius: 5px;
     padding: 15px;
+    overflow: hidden;
 }
 
-.conteiner-colecao .colecoes {
+.div-colecao {
+    width: 100%;
+    position: relative;
+}
+
+.conteiner-colecao .colecao {
     position: relative;
     color: #FFFFFF;
     border-radius: 8px;
@@ -114,15 +129,19 @@ main {
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
+    display: inline-block;
+    width: 90%;
+    margin-right: 10px;
+    transition: width 500ms;
 }
 
-.conteiner-colecao .colecoes:hover {
-    background-color: #005a0f;
+.conteiner-colecao .colecao:hover {
+    background-color: #003f0a;
     color: #00FF00;
     outline: 1px solid #00FF00;
 }
 
-.colecoes p {
+.colecao p {
     display: inline-block;
 }
 
@@ -136,16 +155,23 @@ main {
     cursor: pointer;
 }
 
-.conteiner-colecao button:last-of-type{
-    right: 10px;
-    background: red;
-    color: white;
+.div-colecao .div-img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    background-color: red;
+    border-radius: 10px;
+    padding: 13px;
+    cursor: pointer;
+    display: none;
 }
 
-.conteiner-colecao button:first-of-type{
-    right: 120px;
-    background: rgb(0, 102, 255);
-    color: white;
+.div-colecao .div-img:hover {
+    background-color: rgb(255, 27, 27);
+}
+
+.div-colecao img{
+    width: 30px;
 }
 
 .invisivel {

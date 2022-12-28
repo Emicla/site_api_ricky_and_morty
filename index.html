@@ -15,13 +15,22 @@
         <nav>
             <ul class="botoes-nav">
                 <li>
-                    <a href="https://github.com/Emicla" target="_blank"><img src="img/icon-github.png"></a>
+                    <a href="https://github.com/Emicla" target="_blank">
+                        <img src="img/icon-github.png">
+                    </a>
                 </li>
-                <li><img src="img/icon_linkedin.png"></li>
-                <li><img src="img/icon_livro.png" onclick="adicionarClasse(armaPortais, 'invisivel'), buscaColecao()"></li>
+                
+                <li>
+                    <a href="https://www.linkedin.com/in/emicl%C3%A3-lenon-da-rosa/" target="_blank">
+                        <img src="img/icon_linkedin.png">
+                    </a>
+                </li>
+                <li onclick="adicionarClasse(armaPortais, 'invisivel'), buscaColecao()">
+                    <img src="img/icon_livro.png" id="botao-livro">
+                </li>
 
-                <li class="invisivel" id="icon-add-colecao">
-                    <img src="img/icon adicionar.png" onclick="removeClasse(campoAddColecao, 'invisivel')">
+                <li class="invisivel" id="icon-add-colecao" onclick="removeClasse(campoAddColecao, 'invisivel')">
+                    <img src="img/icon adicionar.png">
                 </li>
             </ul>
         </nav>

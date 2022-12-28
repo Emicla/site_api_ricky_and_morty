@@ -51,6 +51,16 @@
     }
 }
 
+@keyframes rodarImagem {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
 .section-imagens {
     max-width: 55%;
     /* min-height: 400px; */
@@ -59,7 +69,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    border: 1px solid #00FF00;
     border-radius: 5px;
 }
 
@@ -159,6 +168,11 @@
 
 .fundo-escuro .div-img-inf {
     background-color: #023600;
+    animation-name: rodarImagem;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
 }
 
 .fundo-escuro .inf-personagem {
